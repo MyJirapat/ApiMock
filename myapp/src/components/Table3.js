@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import TextField from "@material-ui/core/TextField";
+import Typography from '@material-ui/core/Typography';
 
+import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -9,6 +12,13 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
 
 const columns = [
   { id: "name", label: "No", minWidth: 170 },
@@ -39,18 +49,8 @@ const columns = [
   }
 ];
 
-/*const rows = [
-  { title: "ID", field: "id" },
-  { title: "Username", field: "username" },
-  { title: "Name", field: "buildingname" },
-  { title: "Email", field: "email" },
-  { title: "Phone", field: "phone" },
-  
- 
-  
-];*/
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%"
   },
@@ -62,22 +62,45 @@ const useStyles = makeStyles({
     backgroundColor: '#8795b6',
     color: '#ffff'
   },
-});
+
+  dialog: {
+    marginLeft: '95%',
+    marginTop: "-4%",
+    display: "block",
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+    
+  },
+}));
+
 
 export default function StickyHeadTable() {
   const classes = useStyles();
 
-  
+  const [no, setNo] =useState(0);
+  const [buildingname, setBuildingname] =useState("");
+  //const [roomnumber, setRoom] =useState(0);
+  const [people, setPeople] =useState(0);
+  const [amount, setAmount] =useState(0);
+  const [bill, setBill] =useState("");
+
+
+
 
   const [data, setData] = useState([]);
- /* const rows = [
-    { title: "ID", field: "id" },
-    { title: "Username", field: "username" },
-    { title: "Name", field: "buildingname" },
-    { title: "Email", field: "email" },
-    { title: "Phone", field: "phone" },
-    { title: "Web Link", field: "website" }
-  ];*/
+
+
+
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+ 
   useEffect(() => {
     fetch("http://localhost:3001/tablehistory")
       .then((resp) => resp.json())
@@ -86,7 +109,118 @@ export default function StickyHeadTable() {
       });
   }, []);
 
+  
+  const addtable = () => {
+    Axios.post("http://localhost:3001/create", {
+      no: no,
+      buildingname: buildingname,
+      //roomnumber: roomnumber,
+      people: people,
+      amount: amount,
+      bill: bill,
+    }).then(() => {
+      setData([
+        ...data,
+        {
+          no: no,
+      buildingname: buildingname,
+      //roomnumber: roomnumber,
+      people: people,
+      amount: amount,
+      bill: bill,
+        },
+      ]);
+    });
+  };
+
+
   return (
+   
+ <div className>
+    <Typography paragraph>
+    <Button  className={classes.dialog} variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add
+      </Button>
+      
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="edit-apartment"
+      >
+        <DialogTitle id="edit-apartment">Add</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Please, edit .
+          </DialogContentText>
+
+          <TextField autoFocus
+                  margin="dense"
+                  id="no"
+                  label="No"
+                  type="text"
+                  fullWidth
+                  onChange={(event) =>{
+                   setNo(event.target.value)
+                  }}
+                 
+          />
+          <TextField autoFocus
+                  margin="dense"
+                  id="buildingname"
+                  label="Buildingname"
+                  type="text"
+                  fullWidth
+                  onChange={(event) =>{
+                    setBuildingname(event.target.value)
+                   }}
+          />
+
+         
+          <TextField autoFocus
+                margin="dense"
+                id="people"
+                label="People No"
+                type="text"
+                fullWidth
+                onChange={(event) =>{
+                  setPeople(event.target.value)
+                 }}
+          />
+
+          <TextField autoFocus
+                margin="dense"
+                id="amount"
+                label="Amout"
+                type="text"
+                fullWidth
+                onChange={(event) =>{
+                  setAmount(event.target.value)
+                 }}
+          />
+
+          <TextField autoFocus
+                margin="dense"
+                id="bill"
+                label="Bill"
+                type="text"
+                fullWidth
+                onChange={(event) =>{
+                  setBill(event.target.value)
+                 }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="secondary">
+            Cancel
+          </Button>
+          <Button onClick={addtable} color="primary">
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Typography>
+
+
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
@@ -111,7 +245,7 @@ export default function StickyHeadTable() {
               {row.no}
               </TableCell>
              
-              <TableCell align="left"> {row.buildingname}</TableCell>
+              <TableCell align="left"> {row.buildingname} </TableCell>
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.amount}</TableCell>
@@ -121,5 +255,11 @@ export default function StickyHeadTable() {
         </Table>
       </TableContainer>
     </Paper>
+    
+
+    
+    </div>
+
+    
   );
 }

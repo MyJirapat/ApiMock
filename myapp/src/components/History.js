@@ -23,6 +23,7 @@ import Search from "./Search";
 import Table from "./Table";
 import Table2 from "./Table2";
 import Table3 from "./Table3";
+import Dialog from "./Dialog";
 
 import Button from "@material-ui/core/Button";
 
@@ -172,12 +173,13 @@ export default function MiniDrawer() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
+       
         </Typography>
 
         
    
         
-                
+                    
                     
                     <Table3/>
                        

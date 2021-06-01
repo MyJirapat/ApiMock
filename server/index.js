@@ -22,7 +22,30 @@ app.get("/tablehistory", (req, res) => {
             res.send(result);
         }
     });
-})
+});
+
+
+app.post("/create", (req, res) => {
+    const no = req.body.no;
+    const buildingname = req.body.buildingname;
+    const people = req.body.people;
+    const amount = req.body.amount;
+    const bill = req.body.bill;
+    
+    db.query(
+      "INSERT INTO tablehistory (no, buildingname,people, amount, bill) VALUES (?,?,?,?,?)",
+      [no, buildingname,people, amount, bill ],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send("Values Inserted");
+        }
+      }
+    );
+  });
+
+
 
 app.listen('3001',() =>{
   console.log('Server is running on port 3001');
