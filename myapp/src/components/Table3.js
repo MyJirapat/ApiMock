@@ -117,7 +117,7 @@ export default function StickyHeadTable() {
       //roomnumber: roomnumber,
       people: people,
       amount: amount,
-      bill: bill,
+      
     }).then(() => {
       setData([
         ...data,
@@ -127,11 +127,49 @@ export default function StickyHeadTable() {
       //roomnumber: roomnumber,
       people: people,
       amount: amount,
-      bill: bill,
+      
         },
       ]);
     });
   };
+
+
+  const deletetable=(id) =>{
+    Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
+      setData(
+        data.filter((row) => {
+          return row.id != id;
+        })
+      );
+    });
+  };
+
+  /*const updatestatus = (id) => {
+    Axios.put("http://localhost:3001/update", { amount: newamount, id: id }).then(
+      (response) => {
+        setData(
+          data.map((row) => {
+            return row.id == id
+              ? {
+                  id: row.id,
+                  no: row.no,
+                  buildingname: row.buildingname,
+                  people: row.people,
+                  amount: newamount,
+                 
+                }
+              :row;
+          })
+        );
+      }
+    );
+  };*/
+
+  
+
+
+
+
 
 
   return (
@@ -198,16 +236,8 @@ export default function StickyHeadTable() {
                  }}
           />
 
-          <TextField autoFocus
-                margin="dense"
-                id="bill"
-                label="Bill"
-                type="text"
-                fullWidth
-                onChange={(event) =>{
-                  setBill(event.target.value)
-                 }}
-          />
+         
+          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
@@ -242,13 +272,19 @@ export default function StickyHeadTable() {
           {data.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-              {row.no}
+              {row.no}  
+              
               </TableCell>
              
               <TableCell align="left"> {row.buildingname} </TableCell>
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.people}</TableCell>
-              <TableCell align="left">{row.amount}</TableCell>
+              <TableCell align="left">{row.amount} </TableCell>
+              <TableCell align="left"> <Button onClick={() =>{deletetable(row.id)}} color="primary">
+            delete
+          </Button></TableCell>
+
+      
             </TableRow>
           ))}
         </TableBody>
@@ -256,7 +292,7 @@ export default function StickyHeadTable() {
       </TableContainer>
     </Paper>
     
-
+    
     
     </div>
 

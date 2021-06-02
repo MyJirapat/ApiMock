@@ -30,11 +30,11 @@ app.post("/create", (req, res) => {
     const buildingname = req.body.buildingname;
     const people = req.body.people;
     const amount = req.body.amount;
-    const bill = req.body.bill;
+  
     
     db.query(
-      "INSERT INTO tablehistory (no, buildingname,people, amount, bill) VALUES (?,?,?,?,?)",
-      [no, buildingname,people, amount, bill ],
+      "INSERT INTO tablehistory (no, buildingname,people, amount) VALUES (?,?,?,?)",
+      [no, buildingname,people, amount],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -43,6 +43,19 @@ app.post("/create", (req, res) => {
         }
       }
     );
+  });
+
+
+  app.delete("/delete/:id",(req, res) =>{
+    const id = req.params.id;
+    db.query("DELETE FROM tablehistory WHERE id = ? ", id,(err, result)=>{
+      if (err){
+        console.log(err);
+      } else{
+        res.send(result);
+      }
+    });
+
   });
 
 
