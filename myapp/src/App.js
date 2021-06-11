@@ -10,6 +10,8 @@ import Menu from "./Menu";
 import Login from "./Login";
 import About from "./About";
 import Annoucement from "./Anoucement";
+import Test from "./Test";
+import Electric from "./Expens/Electricity";
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from "react-router-dom";
 
 
@@ -25,7 +27,10 @@ function App() {
       <Route exact path= "/menu" component={Menu}/>
       <Route exact path="/about" component={About}/>
       <Route exact path="/anoucement" component={Annoucement}/>
-     
+      <Route exact path="/test" component={Test}/>
+      <Route exact path="/electric" component={Electric}/>
+
+
      
       
     

@@ -65,13 +65,7 @@ const Search = [
   { Buildingname: "Queen Vv room 112 floor 3 My" },
   { Buildingname: "Queen Vv room 132 floor 3 Zhang" },
   { Buildingname: "Queen Vv room 132 floor 3 Zhang" },
-  { Buildingname: "King David room 112 floor 1 Great"},
-  { Buildingname: "King David room 122 floor 2 Jame"},
-  { Buildingname: "Queen Vv room 112 floor 3 My" },
-  { Buildingname: "Queen Vv room 112 floor 3 My" },
-  { Buildingname: "King David room 112 floor 1 Great"},
-  { Buildingname: "King David room 122 floor 2 Jame"},
-
+  
   
 ];
 

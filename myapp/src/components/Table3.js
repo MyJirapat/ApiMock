@@ -26,7 +26,6 @@ const columns = [
   { id: "code", 
   label: "Buildingname", 
   minWidth: 170,
-  
 
 },
   {
@@ -131,7 +130,16 @@ export default function StickyHeadTable() {
         },
       ]);
     });
+    setOpen(false)
   };
+
+
+
+  /*const handlesubmit = e =>{
+    e.preventDefault()
+      addtable();
+    }
+  }*/
 
 
   const deletetable=(id) =>{
@@ -186,7 +194,7 @@ export default function StickyHeadTable() {
         aria-labelledby="edit-apartment"
       >
         <DialogTitle id="edit-apartment">Add</DialogTitle>
-        <DialogContent>
+        <DialogContent >
           <DialogContentText>
             Please, edit .
           </DialogContentText>
@@ -243,7 +251,9 @@ export default function StickyHeadTable() {
           <Button onClick={handleClose} color="secondary">
             Cancel
           </Button>
-          <Button onClick={addtable} color="primary">
+          <Button 
+          onClick={addtable } 
+          color="primary">
             Submit
           </Button>
         </DialogActions>
@@ -272,8 +282,7 @@ export default function StickyHeadTable() {
           {data.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-              {row.no}  
-              
+              {row.no}    
               </TableCell>
              
               <TableCell align="left"> {row.buildingname} </TableCell>
