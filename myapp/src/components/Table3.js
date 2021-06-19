@@ -48,7 +48,6 @@ const columns = [
   }
 ];
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%"
@@ -76,19 +75,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StickyHeadTable() {
   const classes = useStyles();
-
   const [no, setNo] =useState(0);
   const [buildingname, setBuildingname] =useState("");
   //const [roomnumber, setRoom] =useState(0);
   const [people, setPeople] =useState(0);
   const [amount, setAmount] =useState(0);
   const [bill, setBill] =useState("");
+  //const [newamount, setNewamount] = useState(0);
 
 
 
 
   const [data, setData] = useState([]);
-
 
 
   const [open, setOpen] = React.useState(false);
@@ -173,15 +171,7 @@ export default function StickyHeadTable() {
     );
   };*/
 
-  
-
-
-
-
-
-
   return (
-   
  <div className>
     <Typography paragraph>
     <Button  className={classes.dialog} variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -220,8 +210,6 @@ export default function StickyHeadTable() {
                     setBuildingname(event.target.value)
                    }}
           />
-
-         
           <TextField autoFocus
                 margin="dense"
                 id="people"
@@ -232,7 +220,6 @@ export default function StickyHeadTable() {
                   setPeople(event.target.value)
                  }}
           />
-
           <TextField autoFocus
                 margin="dense"
                 id="amount"
@@ -244,8 +231,6 @@ export default function StickyHeadTable() {
                  }}
           />
 
-         
-          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
@@ -264,15 +249,18 @@ export default function StickyHeadTable() {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
+      
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell
+                <TableCell 
                 className={classes.Head}    
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
+                  
                 >
+                 
                   {column.label}
                 </TableCell>
               ))}
@@ -284,11 +272,12 @@ export default function StickyHeadTable() {
               <TableCell component="th" scope="row">
               {row.no}    
               </TableCell>
-             
               <TableCell align="left"> {row.buildingname} </TableCell>
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.amount} </TableCell>
+               
+
               <TableCell align="left"> <Button onClick={() =>{deletetable(row.id)}} color="primary">
             delete
           </Button></TableCell>

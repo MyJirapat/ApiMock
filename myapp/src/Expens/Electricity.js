@@ -303,7 +303,6 @@ export default function MiniDrawer() {
                   <div className="col">
                         <Simplecard 
                         Text="Floor 3"
-
                         room1="301"
                         status1="Inhabitat"
                         PreviousDate1="27/04/2021"

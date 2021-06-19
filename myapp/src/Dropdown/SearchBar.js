@@ -5,6 +5,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
+import Search from '@material-ui/icons/Search';
 
 
 /*const useStyles = makeStyles((theme) => ({
@@ -37,29 +38,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Sizes() {
+ function Searchbar(props) {
   const classes = useStyles();
 
   return (
     <Paper component="form" className={classes.root}>
-      <Autocomplete
-        id="size-small-outlined"
-        size="small"
-        options={Search}
-        getOptionLabel={(option) => option.Buildingname}
-    
-        renderInput={(params) => (<TextField 
-          {...params} 
-          variant="outlined" label="Search" placeholder="Search" />
-        )}
-      />
+      
+        <TextField 
+            size="small"
+            variant="outlined" 
+            label="Search" 
+            placeholder="Search"
+            //onChange= {props.searchName }
+          
+    //} 
+          />
+     
+      
     </Paper>
   );
 }
 
+export default Searchbar;
+
 
 // Building Data
-const Search = [
+/*const Search = [
   { Buildingname: "King David room 112 floor 1 Great"},
   { Buildingname: "King David room 122 floor 2 Jame"},
   { Buildingname: "Queen Vv room 112 floor 3 My" },
@@ -67,7 +71,7 @@ const Search = [
   { Buildingname: "Queen Vv room 132 floor 3 Zhang" },
   
   
-];
+];*/
 
 
 

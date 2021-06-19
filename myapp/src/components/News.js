@@ -25,12 +25,11 @@ const useStyles = makeStyles((theme)=>   ({
 
 export default function MediaCard(props) {
   const classes = useStyles();
-
   return (  
   <Card className={classes.root}>
-        <CardActionArea>
-        <img src={props.imgsrc} className={classes.media}/>
-        <h3 className="name">{props.Title} </h3>
+    <CardActionArea>
+          <img src={props.imgsrc} className={classes.media}/>
+          <h3 className="name">{props.Title} </h3>
         <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
             {props.NewsTitle}
@@ -38,8 +37,9 @@ export default function MediaCard(props) {
         <Typography variant="body2" color="textSecondary" component="p">
             {props.Text}
         </Typography>
-      </CardContent>
+        </CardContent>
     </CardActionArea>
+
     <CardActions>
       <Button size="small" color="primary">
          {props.Share}
@@ -48,15 +48,12 @@ export default function MediaCard(props) {
          {props.LearnMorre}
       </Button>
     </CardActions>
-  </Card>
-    
-    
+  </Card>  
   );
 }
 
 
 //<img src={props.imgsrc} className={classes.media}/>
-
 
 //<image className={classes.media}>{props.img}</image>
 

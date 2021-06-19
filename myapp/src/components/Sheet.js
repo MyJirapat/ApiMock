@@ -13,6 +13,8 @@ import Card from "@material-ui/core/Card";
 import Image1 from "../Image/ABAC.jpg";
 import Image2 from "../Image/ABAC2.jpg";
 import axios from 'axios';
+import Searchbar from '../Dropdown/SearchBar'
+//import Search from "@material-ui/icons/Search";
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -63,23 +65,34 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
 
   const [posts, setPosts] = useState([]);
+  const [search, setSearch] =useState([]);
 
 useEffect(() =>{
 
    async function fetchPost(){
     try{
-      const requesUrl = 'http://localhost:3001/tablehistory';
+      const requesUrl = 'https://restcountries.eu/rest/v2/all';
       const response = await fetch(requesUrl);
       const responseJSON =await response.json();
       console.log(responseJSON);
       setPosts(responseJSON);
+     
     } catch{
-
+     
     }
 
+   
    }
    fetchPost();
 }, []);
+
+
+
+const filterCards = event =>{
+  const value = event.target.value.toLowerCase();
+  const filtered = search.filter(post=>(`${post.name}`.toLowerCase().includes(value)));
+  setSearch(filtered);
+}
 
 
 
@@ -96,24 +109,27 @@ useEffect(() =>{
 
   })*/
 
-
+  
 
   return (
     <div className={classes.root}>  
-      <Paper elevation={3}>
+   
+      <Paper elevation={4
+      }>
       <Typography>
         <h1> Anoucement</h1>
         </Typography>
         <Box p={1}>
         
         <div className="container">
+        <Searchbar onChange={filterCards} placeholder="Search"/>
                 <div className="row">     
                     <div className="col-md-6">
                     
-                    {posts.map((index) => (
+                    {posts.map((post) => (
                        <News
                        //Title={index.id}
-                       Title={index.buildingname}
+                       Title={post.name}
                        /> ) )};
                                               
                      </div>

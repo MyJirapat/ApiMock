@@ -12,6 +12,7 @@ import About from "./About";
 import Annoucement from "./Anoucement";
 import Test from "./Test";
 import Electric from "./Expens/Electricity";
+import Electricitybill from "./Billhistory/Electricitybill";
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from "react-router-dom";
 
 
@@ -21,23 +22,17 @@ import {BrowserRouter as Router, Route, Link, NavLink, Switch} from "react-route
 function App() {
   return (
     <div className="App">
-      
-    
-      <Route exact path= "/login" component={Login}/>
+          
+      <Route exact path= "/" component={Login}/>
       <Route exact path= "/menu" component={Menu}/>
       <Route exact path="/about" component={About}/>
       <Route exact path="/anoucement" component={Annoucement}/>
       <Route exact path="/test" component={Test}/>
       <Route exact path="/electric" component={Electric}/>
+      <Route exact path="/electricitybill" component={Electricitybill}/>
 
 
-     
-      
-    
-        
-        
-      
-      
+
 
     </div>
   );

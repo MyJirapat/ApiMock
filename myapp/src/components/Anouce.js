@@ -31,6 +31,7 @@ import Sheet from "./Sheet";
 import News from "./News";
 import Dialog from "./Dialog";
 import Modal from "./Modal";
+import Social from "../Anouncement/Socialcard";
 
 import '../css/serch.css';
 
@@ -179,7 +180,7 @@ export default function MiniDrawer() {
             
             </Typography>
 
-            <Sheet/>
+            <Social/>
         <div className="container d-flex justify-content-start">
           <div className="row">   
           </div>

@@ -77,13 +77,12 @@ export default function AcccessibleTable(props) {
           {columns.map((column) => (
             
                 <TableCell  
-                
+                 
                   className={classes.Head}
                   key={column.id} 
                   align={column.align}
                   style={{ minWidth: column.minWidth}}
-                 
-                  
+                      
                 >
                   {column.label}
                 </TableCell>
