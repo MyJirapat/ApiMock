@@ -43,23 +43,26 @@ useEffect(() => {
 
 
     return(
-    <div className="App">
-        <div style={{ margin: '0 auto', marginTop: '10%' }}>
-        <label>Search:</label>
-        <input type="text" onChange={(event) =>handleSearch(event)} />
-    </div>
-        <div style={{padding:10}}>
-        {filteredData.map((value,index)=>{
-    return(
-        <div key={value.id}>
-        <div style={styles}>
-            {value.title}
+
+        <div className="App">
+            <div style={{ margin: '0 auto', marginTop: '10%' }}>
+                <label>Search:</label>
+                <input type="text" onChange={(event) =>handleSearch(event)} />
         </div>
-    </div>
-    )
-    })}
-    </div>
-    </div>
+
+            <div style={{padding:10}}>
+                {filteredData.map((value,index)=>{
+
+        return(
+            <div key={value.id}>
+               <div style={styles}>
+                    {value.title}
+              </div>
+           </div>
+     )
+     })}
+     </div>
+     </div>
     );
 }
 

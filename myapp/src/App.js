@@ -13,10 +13,12 @@ import Annoucement from "./Anoucement";
 import Test from "./Test";
 import Electric from "./Expens/Electricity";
 import Electricitybill from "./Billhistory/Electricitybill";
+import Chart from "./Boardtable/Chart";
+import FeaturedInfo from './Boardtable/featuredInfo';
+import Sidebar from './Boardtable/Sidebar';
+
+//import Dashboard from './Dashbordtable/Dashboard';
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from "react-router-dom";
-
-
-
 
 
 function App() {
@@ -29,7 +31,17 @@ function App() {
       <Route exact path="/anoucement" component={Annoucement}/>
       <Route exact path="/test" component={Test}/>
       <Route exact path="/electric" component={Electric}/>
+      <Route exact path="/chart" component={Chart}/>
+      <Route exact path="/feature" component={FeaturedInfo}/>
+      <Route exact path="/dashboard" component={Sidebar}/>
+
+
+
       <Route exact path="/electricitybill" component={Electricitybill}/>
+
+      
+
+
 
 
 
