@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));*/
 
-
 export default function Sizes() {
   const classes = useStyles();
 

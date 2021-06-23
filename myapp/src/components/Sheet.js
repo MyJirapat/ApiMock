@@ -25,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       marginLeft: theme.spacing(10),
       width: theme.spacing(50),
-      height: theme.spacing(100),
-      
+      height: theme.spacing(100),  
       width: 680
     },
 
@@ -41,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root3:{
-    
     margin: theme.spacing(4),
     width: 245,
   }
@@ -75,13 +73,9 @@ useEffect(() =>{
       const response = await fetch(requesUrl);
       const responseJSON =await response.json();
       console.log(responseJSON);
-      setPosts(responseJSON);
-     
-    } catch{
-     
+      setPosts(responseJSON);    
+    } catch{    
     }
-
-   
    }
    fetchPost();
 }, []);
@@ -93,8 +87,6 @@ const filterCards = event =>{
   const filtered = search.filter(post=>(`${post.name}`.toLowerCase().includes(value)));
   setSearch(filtered);
 }
-
-
 
   /*useEffect(() =>{
     axios.get('https://60aa459d66f1d000177729b4.mockapi.io/api/v1/announcement')
@@ -113,9 +105,7 @@ const filterCards = event =>{
 
   return (
     <div className={classes.root}>  
-   
-      <Paper elevation={4
-      }>
+      <Paper elevation={4}>
       <Typography>
         <h1> Anoucement</h1>
         </Typography>
@@ -124,25 +114,52 @@ const filterCards = event =>{
         <div className="container">
         <Searchbar onChange={filterCards} placeholder="Search"/>
                 <div className="row">     
-                    <div className="col-md-6">
-                    
+                    <div className="col-md-6">  
                     {posts.map((post) => (
                        <News
                        //Title={index.id}
                        Title={post.name}
-                       /> ) )};
-                                              
+                       /> ))};                              
                      </div>
         </div>
         </div>
         </Box>
-        
       </Paper> 
     </div>
   );
 } 
 
 export default Variants;
+
+
+/*<div className="App"> 
+      <h1>Social Cards</h1>
+      <input className="search-box" onInput={filterCards} placeholder="Search..."/>
+      <div className="cards-container">  
+            {users.map((user, index) => (
+        <News
+        key={index} 
+        userData={user}/>
+        ))}
+      </div>
+      </div>*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

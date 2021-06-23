@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper'
+import { Grid } from "@material-ui/core/";
+
 
 const useStyles = makeStyles((theme)=>   ({
   root: {
@@ -26,6 +28,7 @@ const useStyles = makeStyles((theme)=>   ({
 export default function MediaCard(props) {
   const classes = useStyles();
   return (  
+  <Grid item xs={12} sm={6} md={3}  >
   <Card className={classes.root}>
     <CardActionArea>
           <img src={props.imgsrc} className={classes.media}/>
@@ -49,6 +52,7 @@ export default function MediaCard(props) {
       </Button>
     </CardActions>
   </Card>  
+  </Grid>
   );
 }
 

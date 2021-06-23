@@ -212,7 +212,7 @@ export default function MiniDrawer() {
             </div>
             <div className="container">
             <div className="col-lg-10">
-                        <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
+                        <Chart data={userData} title="Revenue" grid dataKey="Active User"/>
                     </div>
                     </div>
         </Typography>
