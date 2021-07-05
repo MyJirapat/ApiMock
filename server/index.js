@@ -46,6 +46,8 @@ app.post("/create", (req, res) => {
   });
 
 
+/**/ 
+
  app.put("/update", (req, res) => {
     const id = req.body.id;
     const amount = req.body.wage;
@@ -61,7 +63,6 @@ app.post("/create", (req, res) => {
       }
     );
   });
-
 
 
   app.delete("/delete/:id",(req, res) =>{

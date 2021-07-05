@@ -87,8 +87,6 @@ export default function StickyHeadTable() {
 
 
   const [data, setData] = useState([]);
-
-
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -230,7 +228,6 @@ export default function StickyHeadTable() {
                   setAmount(event.target.value)
                  }}
           />
-
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
@@ -249,7 +246,6 @@ export default function StickyHeadTable() {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
-      
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -257,10 +253,8 @@ export default function StickyHeadTable() {
                 className={classes.Head}    
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                  
-                >
-                 
+                  style={{ minWidth: column.minWidth }}       
+                >    
                   {column.label}
                 </TableCell>
               ))}
@@ -276,24 +270,15 @@ export default function StickyHeadTable() {
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.people}</TableCell>
               <TableCell align="left">{row.amount} </TableCell>
-               
-
               <TableCell align="left"> <Button onClick={() =>{deletetable(row.id)}} color="primary">
             delete
-          </Button></TableCell>
-
-      
+          </Button></TableCell>  
             </TableRow>
           ))}
         </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
-    
-    
-    
-    </div>
-
-    
+    </Paper>  
+    </div>    
   );
 }

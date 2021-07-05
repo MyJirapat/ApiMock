@@ -15,15 +15,11 @@ const useStyles = makeStyles((theme)=>   ({
   root: {
     maxWidth: 345,
     margin: theme.spacing(2),
-
-
   },
   media: {
     height: 140,
   },
 }));
-
-
 
 export default function MediaCard(props) {
   const classes = useStyles();
